@@ -17,12 +17,11 @@ async def handle_message(message):
 async def start_timer(message):
     try:
         time_minutes = int(message.content.split()[1])
+        name = str(message.content.split()[2])
+        wait_for = capitalize_first_letter(name)
     except:
-        await message.channel.send('Podaj czas w minutach, np. !czekaj 15')
+        await message.channel.send('Podaj czas w minutach oraz na kogo chcesz zaczekać, np. !czekaj 15 Kacper')
         return
-
-    name = str(message.content.split()[2])
-    wait_for = capitalize_first_letter(name)
 
     await message.channel.send(f'Oczekiwanie rozpoczęte! {wait_for} ma {time_minutes} min na dołączenie.')
 
